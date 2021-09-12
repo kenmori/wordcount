@@ -1,5 +1,5 @@
 [package]
-name = "wordcount2"
+name = "wordcount"
 version = "0.1.0"
 edition = "2018"
 
@@ -8,3 +8,6 @@ edition = "2018"
 [dependencies]
 regex = "1.0"
 
+[lib]
+name = "wordcountlib"
+path = "src/lib.rs"
