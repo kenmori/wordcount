@@ -20,11 +20,22 @@ pub fn count(input: impl BufRead) -> HashMap<String, usize> {
   freqs
 }
 
-fn main(){
+pub fn check_above3(freqs: &HashMap<String, usize>) -> bool {
+  let mut is_include_avobe3 = false;
+  for (_key, value) in freqs.iter() {
+    if *value > 2 {
+      is_include_avobe3 = true
+    }
+  }
+  return is_include_avobe3;
+}
+
+fn main() {
   let filename = env::args().nth(1).expect("1 argument FILENAME required");
   let file = File::open(filename).unwrap();
   let reader = BufReader::new(&file);
 
   let freqs = count(reader);
-  println!("{:?}", freqs);
+  let is_above3 = check_above3(&freqs);
+  println!("{:?}, {}", freqs, is_above3);
 }
